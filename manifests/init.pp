@@ -16,6 +16,12 @@ class lombok {
 #        require => Exec["wget_lombok"],	
     }
 
+    file_line { 'lombok_config':
+        path => '/opt/sts-bundle/sts-home/STS.ini',
+        line => '-javaagent:lombok.jar',
+        require => Exec["copy_lombok_jar"],
+    }
+
 #    file {"/tmp/$tar_filename":
 #    	ensure => absent,
 #	require => Exec["copy_lombok_jar"]
